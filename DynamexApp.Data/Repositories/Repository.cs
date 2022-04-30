@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace DynamexApp.Data.Repositories
 {
+
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private readonly AppDbContext _context;
@@ -75,10 +76,16 @@ namespace DynamexApp.Data.Repositories
             await _context.Set<TEntity>().AddAsync(entity);
         }
 
+        public async Task<bool> IsExistAsync(Expression<Func<TEntity, bool>> exp)
+        {
+            return await _context.Set<TEntity>().AnyAsync(exp);
+        }
+
         public void Remove(TEntity entity)
         {
             _context.Set<TEntity>().Remove(entity);
         }
+        
 
     }
 }

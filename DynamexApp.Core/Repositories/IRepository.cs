@@ -15,6 +15,7 @@ namespace DynamexApp.Core.Repositories
         Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> exp, params string[] includes);
         Task<int> GetTotalCountAsync(Expression<Func<TEntity, bool>> exp, params string[] includes);
         void Remove(TEntity entity);
+        Task<bool> IsExistAsync(Expression<Func<TEntity, bool>> exp);
 
     }
 }
