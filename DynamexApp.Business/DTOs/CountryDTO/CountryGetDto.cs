@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DynamexApp.Business.Services.Interfaces
+namespace DynamexApp.Business.DTOs.CountryDTO
 {
-    public class IBrandService
+    public class CountryGetDto
     {
-
+        public string Name { get; set; }
     }
 }

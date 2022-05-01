@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DynamexApp.Business.DTOs.CountryDTO;
 using DynamexApp.Business.DTOs.LanguageDTO;
 using DynamexApp.Core.Entities;
 using System;
@@ -16,6 +17,7 @@ namespace DynamexApp.Business.Profiles
             CreateMap<LanguagePostDTO, Language>();
             CreateMap<Language, LanguageGetDTO>();
             CreateMap<Language, LanguageListDTO>();
+            CreateMap<Country, CountryPostDTO>();
         }
     }
 }

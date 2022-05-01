@@ -1,6 +1,9 @@
 using AutoMapper;
+using DynamexApp.API.ServiceExtentions;
 using DynamexApp.Business.CustomExceptions;
 using DynamexApp.Business.DTOs.LanguageDTO;
+using DynamexApp.Business.HelperService.Implementations;
+using DynamexApp.Business.HelperService.Interfaces;
 using DynamexApp.Business.Profiles;
 using DynamexApp.Business.Services.Implementations;
 using DynamexApp.Business.Services.Interfaces;
@@ -50,6 +53,7 @@ namespace DynamexApp.Api
             });
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ILanguageService, LanguageService>();
+            services.AddScoped<IFileManager, FileManager>();
 
             var mapConfig = new MapperConfiguration(mc =>
             {
@@ -68,34 +72,7 @@ namespace DynamexApp.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DynamexApp.Api v1"));
             }
-            app.UseExceptionHandler(error =>
-            {
-                error.Run(async context =>
-                {
-                    var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
-                    var code = 500;
-                    string message = "Inter Server Error. Please Try Again Later!";
-
-                    if (contextFeature!=null)
-                    {
-                        message = contextFeature.Error.Message;
-                        if (contextFeature.Error is ItemNotFoundException)
-                        {
-                            code = 404;
-                        }
-                        else if(contextFeature.Error is RecordAlreadyExistException)
-                        {
-                            code = 409;
-                        }
-                    }
-                    context.Response.StatusCode = code;
-                    await context.Response.WriteAsync(new
-                    {
-                        code = code,
-                        message =message
-                    }.ToString());
-                });
-            });
+            app.AddExceptionHandlerExtention();
             app.UseHttpsRedirection();
 
             app.UseRouting();

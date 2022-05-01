@@ -15,7 +15,8 @@ namespace DynamexApp.Business.Services.Interfaces
         Task<IEnumerable<LanguageListDTO>> GetAllLanguagesAsync(Expression<Func<Language,bool>> filter=null);
         Task CreateAsync(LanguagePostDTO languageDTO);
         Task EditAsync(int id, LanguagePostDTO languageDTO);
-        void Delete(int id);
+        Task Delete(int id);
+
         //Task<bool> IsExistLanguageAsync(Expression<Func<Language, bool>> filter);
 
     }

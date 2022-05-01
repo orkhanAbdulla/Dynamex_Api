@@ -13,10 +13,10 @@ namespace DynamexApp.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LanguageController : ControllerBase
+    public class LanguagesController : ControllerBase
     {
         private readonly ILanguageService _languageService;
-        public LanguageController(ILanguageService categoryService)
+        public LanguagesController(ILanguageService categoryService)
         {
             _languageService = categoryService;
         }
@@ -47,18 +47,12 @@ namespace DynamexApp.Api.Controllers
             await _languageService.EditAsync(id, languagePostDTO);
             return NoContent();
         }
-        //public void Delete(int id)
-        //{
-        //    try
-        //    {
-        //        _languageService.Delete(id);
-        //    }
-        //    catch (ItemNotFoundException ex)
-        //    {
-        //       true NotFound(ex.Message);
-        //    }
-            
-        //}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+           await _languageService.Delete(id);
+           return NoContent();
+        }
 
 
 

@@ -33,11 +33,12 @@ namespace DynamexApp.Business.Services.Implementations
             await _unitOfWork.CommitAsync();
         }
 
-        public async void Delete(int id)
+        public async Task Delete(int id)
         {
             Language language = await _unitOfWork.LanguageRepository.GetAsync(x => x.Id == id);
             if (language == null) throw new ItemNotFoundException($"item not found by:{id}");
-            _unitOfWork.LanguageRepository.Remove(language);
+            language.IsDeleted = true;
+            await _unitOfWork.CommitAsync();
         }
 
         public async Task EditAsync(int id, LanguagePostDTO languageDTO)
@@ -46,7 +47,7 @@ namespace DynamexApp.Business.Services.Implementations
             if (language == null) throw new ItemNotFoundException($"item not found by:{id}");
             if (await _unitOfWork.LanguageRepository.IsExistAsync(x =>x.Id!=id && x.Name.ToLower() == languageDTO.Name.ToLower()||x.Code.ToLower()==languageDTO.Code.ToLower()))
                 throw new RecordAlreadyExistException($"Item already exist");
-            language = _mapper.Map<Language>(languageDTO);
+             _mapper.Map<LanguagePostDTO,Language>(languageDTO,language);
             await _unitOfWork.CommitAsync();
         }
 
