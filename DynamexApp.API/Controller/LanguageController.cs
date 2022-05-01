@@ -23,58 +23,28 @@ namespace DynamexApp.Api.Controllers
         [HttpPost("")]
         public async Task<IActionResult> Create(LanguagePostDTO languagePost)
         {
-            try
-            {
-                await _languageService.CreateAsync(languagePost);
-            }
-            catch (RecordAlreadyExistException msg)
-            {
-                return Conflict(msg.Message);
-            }
-            
-            return StatusCode(201);
+           await _languageService.CreateAsync(languagePost);
+           return StatusCode(201);
         }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            LanguageGetDTO model = null;
-
-            try
-            {
-                model = await _languageService.GetLanguageAsync(id);
-            }
-            catch (ItemNotFoundException ex)
-            {
-
-                return NotFound(ex.Message);
-            }
-
+            LanguageGetDTO model = await _languageService.GetLanguageAsync(id);
             return Ok(model);
         }
+
         [HttpGet("")]
         public async Task<IActionResult> GetAll()
         {
-            IEnumerable<LanguageListDTO> languageGets =await _languageService.GetAllLanguagesAsync(x => x.IsDeleted == false);
-            
+           IEnumerable<LanguageListDTO> languageGets =await _languageService.GetAllLanguagesAsync(x => x.IsDeleted == false);
            return Ok(languageGets);
         }
     
         [HttpPut("{id}")]
-
         public async Task<IActionResult> Update(int id, LanguagePostDTO languagePostDTO)
         {
-            try
-            {
-                await _languageService.EditAsync(id, languagePostDTO);
-            }
-            catch (ItemNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch(RecordAlreadyExistException ex)
-            {
-                return Conflict(ex.Message);
-            }
+            await _languageService.EditAsync(id, languagePostDTO);
             return NoContent();
         }
         //public void Delete(int id)

@@ -13,6 +13,7 @@ namespace DynamexApp.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<Brand> builder)
         {
+            builder.Property(x => x.Name).IsRequired(true);
             builder.Property(x => x.Image).IsRequired(true);
             builder.Property(x => x.Link).IsRequired(true);
             builder.Property(x => x.IsDeleted).HasDefaultValue(false);

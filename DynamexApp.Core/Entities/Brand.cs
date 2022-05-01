@@ -10,6 +10,7 @@ namespace DynamexApp.Core.Entities
     {
         public string Image { get; set; }
         public string Link { get; set; }
+        public string Name { get; set; }
         public ICollection<CountryBrand> CountryBrands { get; set; }
     }
 }
