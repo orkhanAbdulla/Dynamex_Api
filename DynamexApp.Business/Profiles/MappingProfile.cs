@@ -16,8 +16,9 @@ namespace DynamexApp.Business.Profiles
         {
             CreateMap<LanguagePostDTO, Language>();
             CreateMap<Language, LanguageGetDTO>();
-            CreateMap<Language, LanguageListDTO>();
-            CreateMap<Country, CountryPostDTO>();
+            CreateMap<CountryPostDTO, Country>();
+            CreateMap<Country, CountryGetDto>();
+            CreateMap<CountryEditDTO, Country>();
         }
     }
 }

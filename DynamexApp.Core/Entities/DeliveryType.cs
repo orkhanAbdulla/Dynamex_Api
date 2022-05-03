@@ -11,6 +11,6 @@ namespace DynamexApp.Core.Entities
         public string Name { get; set; }
         public int LanguageId { get; set; }
         public Language Language { get; set; }
-        public ICollection<DeliveryPrice> DeliveryPrices { get; set; }
+        public ICollection<Tariff> Tariffs { get; set; }
     }
 }

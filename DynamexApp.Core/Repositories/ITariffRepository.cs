@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DynamexApp.Core.Repositories
 {
-    public interface IDeliveryPriceRepository:IRepository<DeliveryPrice>
+    public interface ITariffRepository:IRepository<Tariff>
     {
     }
 }

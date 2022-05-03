@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace DynamexApp.Data.Configuration
 {
-    class DeliveryPriceConfiguration : IEntityTypeConfiguration<DeliveryPrice>
+    class TariffConfiguration : IEntityTypeConfiguration<Tariff>
     {
-        public void Configure(EntityTypeBuilder<DeliveryPrice> builder)
+        public void Configure(EntityTypeBuilder<Tariff> builder)
         {
-            builder.HasOne(x => x.DeliveryType).WithMany(x => x.DeliveryPrices).OnDelete(DeleteBehavior.NoAction);
+            builder.HasOne(x => x.DeliveryType).WithMany(x => x.Tariffs).OnDelete(DeleteBehavior.NoAction);
             builder.Property(x => x.MinWeight).IsRequired(true);
             builder.Property(x => x.MinWeight).IsRequired(true);
             builder.Property(x => x.Price).IsRequired(true).HasColumnType("decimal(10,2)");

@@ -11,7 +11,7 @@ namespace DynamexApp.Core
     {
         public IBrandRepository BrandRepository { get; }
         public ICountryRepository CountryRepository { get; }
-        public IDeliveryPriceRepository DeliveryPriceRepository { get; }
+        public ITariffRepository DeliveryPriceRepository { get; }
         public IDeliveryTypeRepository DeliveryTypeRepository { get; }
         public ILanguageRepository LanguageRepository { get; }
         public INewsRepository NewsRepository { get; }

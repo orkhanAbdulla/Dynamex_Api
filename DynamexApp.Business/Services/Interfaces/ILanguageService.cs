@@ -12,7 +12,7 @@ namespace DynamexApp.Business.Services.Interfaces
     public interface ILanguageService
     {
         Task<LanguageGetDTO> GetLanguageAsync(int id);
-        Task<IEnumerable<LanguageListDTO>> GetAllLanguagesAsync(Expression<Func<Language,bool>> filter=null);
+        Task<IEnumerable<LanguageGetDTO>> GetAllLanguagesAsync(Expression<Func<Language,bool>> filter=null);
         Task CreateAsync(LanguagePostDTO languageDTO);
         Task EditAsync(int id, LanguagePostDTO languageDTO);
         Task Delete(int id);

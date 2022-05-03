@@ -15,7 +15,7 @@ namespace DynamexApp.Data
         private readonly AppDbContext _context;
         private IBrandRepository _brand;
         private ICountryRepository _country;
-        private IDeliveryPriceRepository _deliveryPrice;
+        private ITariffRepository _deliveryPrice;
         private IDeliveryTypeRepository _deliveryType;
         private ILanguageRepository _language;
         private INewsRepository _news;
@@ -33,7 +33,7 @@ namespace DynamexApp.Data
 
         public ICountryRepository CountryRepository => _country= _country?? new CountryRepository(_context);
 
-        public IDeliveryPriceRepository DeliveryPriceRepository => _deliveryPrice = _deliveryPrice ?? new DeliveryPriceRepository(_context);
+        public ITariffRepository DeliveryPriceRepository => _deliveryPrice = _deliveryPrice ?? new TariffRepository(_context);
 
         public IDeliveryTypeRepository DeliveryTypeRepository => _deliveryType = _deliveryType ?? new DeliveryTypeRepository(_context);
 

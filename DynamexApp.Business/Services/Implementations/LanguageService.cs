@@ -51,10 +51,10 @@ namespace DynamexApp.Business.Services.Implementations
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task<IEnumerable<LanguageListDTO>> GetAllLanguagesAsync(Expression<Func<Language, bool>> filter = null)
+        public async Task<IEnumerable<LanguageGetDTO>> GetAllLanguagesAsync(Expression<Func<Language, bool>> filter = null)
         {
             IEnumerable<Language> languages = await _unitOfWork.LanguageRepository.GetAllAsync(filter);
-            IEnumerable<LanguageListDTO> languageListDTOs = _mapper.Map<IEnumerable<LanguageListDTO>>(languages);
+            IEnumerable<LanguageGetDTO> languageListDTOs = _mapper.Map<IEnumerable<LanguageGetDTO>>(languages);
             return languageListDTOs;
         }
 

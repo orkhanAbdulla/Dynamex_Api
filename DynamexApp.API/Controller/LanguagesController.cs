@@ -37,7 +37,7 @@ namespace DynamexApp.Api.Controllers
         [HttpGet("")]
         public async Task<IActionResult> GetAll()
         {
-           IEnumerable<LanguageListDTO> languageGets =await _languageService.GetAllLanguagesAsync(x => x.IsDeleted == false);
+           IEnumerable<LanguageGetDTO> languageGets =await _languageService.GetAllLanguagesAsync(x => x.IsDeleted == false);
            return Ok(languageGets);
         }
     

@@ -13,8 +13,8 @@ namespace DynamexApp.Business.Services.Interfaces
     {
         Task CreateAsync(CountryPostDTO countryPostDTO);
         Task Delete(int id);
-        Task EditAsync(int id, CountryPostDTO countryPostDTO);
-        Task<CountryGetDto> GetLanguageAsync(int id);
-        Task<IEnumerable<CountryListDTO>> GetAllLanguagesAsync(Expression<Func<Country, bool>> filter = null);
+        Task EditAsync(int id, CountryEditDTO countryPostDTO);
+        Task<CountryGetDto> GetCountryAsync(int id);
+        Task<IEnumerable<CountryGetDto>> GetAllCountryAsync(string code);
     }
 }

@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace DynamexApp.Core.Entities
 {
-    public class DeliveryPrice:BaseEntity
+    public class Tariff:BaseEntity
     {
         public int MinWeight { get; set; }
         public int MaxWeight { get; set; }
+        public bool IsMoreThanOneKg { get; set; }
         public decimal Price { get; set; }
         public int CountryId { get; set; }
         public Country Country { get; set; }

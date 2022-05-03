@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DynamexApp.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220428185337_FirstMigrations")]
-    partial class FirstMigrations
+    [Migration("20220502190514_firstMigration")]
+    partial class firstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,61 @@ namespace DynamexApp.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.16")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("DynamexApp.Core.Entities.AbroadAddress", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Adress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AdressTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 928, DateTimeKind.Utc).AddTicks(6846));
+
+                    b.Property<string>("District")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<DateTime>("ModifiedAt")
+                        .ValueGeneratedOnUpdate()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 928, DateTimeKind.Utc).AddTicks(7688));
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Region")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("AbroadAddresses");
+                });
 
             modelBuilder.Entity("DynamexApp.Core.Entities.Brand", b =>
                 {
@@ -31,7 +86,7 @@ namespace DynamexApp.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 4, 28, 22, 53, 37, 252, DateTimeKind.Utc).AddTicks(2880));
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 929, DateTimeKind.Utc).AddTicks(5065));
 
                     b.Property<string>("Image")
                         .IsRequired()
@@ -49,7 +104,11 @@ namespace DynamexApp.Data.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 4, 28, 22, 53, 37, 252, DateTimeKind.Utc).AddTicks(5356));
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 929, DateTimeKind.Utc).AddTicks(5284));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -66,7 +125,7 @@ namespace DynamexApp.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 4, 28, 22, 53, 37, 255, DateTimeKind.Utc).AddTicks(821));
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 930, DateTimeKind.Utc).AddTicks(7774));
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -79,7 +138,7 @@ namespace DynamexApp.Data.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 4, 28, 22, 53, 37, 255, DateTimeKind.Utc).AddTicks(1418));
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 930, DateTimeKind.Utc).AddTicks(8020));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -115,52 +174,6 @@ namespace DynamexApp.Data.Migrations
                     b.ToTable("CountryBrands");
                 });
 
-            modelBuilder.Entity("DynamexApp.Core.Entities.DeliveryPrice", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CountryId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 4, 28, 22, 53, 37, 260, DateTimeKind.Utc).AddTicks(8294));
-
-                    b.Property<int>("DeliveryTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
-                    b.Property<int>("MaxWeight")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MinWeight")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ModifiedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 4, 28, 22, 53, 37, 260, DateTimeKind.Utc).AddTicks(8727));
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(10,2)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CountryId");
-
-                    b.HasIndex("DeliveryTypeId");
-
-                    b.ToTable("DeliveryPrices");
-                });
-
             modelBuilder.Entity("DynamexApp.Core.Entities.DeliveryType", b =>
                 {
                     b.Property<int>("Id")
@@ -171,7 +184,7 @@ namespace DynamexApp.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 4, 28, 22, 53, 37, 261, DateTimeKind.Utc).AddTicks(8211));
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 935, DateTimeKind.Utc).AddTicks(4738));
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -184,7 +197,7 @@ namespace DynamexApp.Data.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .ValueGeneratedOnUpdate()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 4, 28, 22, 53, 37, 261, DateTimeKind.Utc).AddTicks(8623));
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 935, DateTimeKind.Utc).AddTicks(5063));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -213,7 +226,7 @@ namespace DynamexApp.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 4, 28, 22, 53, 37, 262, DateTimeKind.Utc).AddTicks(9783));
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 936, DateTimeKind.Utc).AddTicks(1408));
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -223,7 +236,7 @@ namespace DynamexApp.Data.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 4, 28, 22, 53, 37, 263, DateTimeKind.Utc).AddTicks(166));
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 936, DateTimeKind.Utc).AddTicks(1644));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -244,7 +257,7 @@ namespace DynamexApp.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 4, 28, 22, 53, 37, 264, DateTimeKind.Utc).AddTicks(230));
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 936, DateTimeKind.Utc).AddTicks(8067));
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -264,7 +277,7 @@ namespace DynamexApp.Data.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 4, 28, 22, 53, 37, 264, DateTimeKind.Utc).AddTicks(688));
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 936, DateTimeKind.Utc).AddTicks(8326));
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -288,7 +301,7 @@ namespace DynamexApp.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 4, 28, 22, 53, 37, 266, DateTimeKind.Utc).AddTicks(5932));
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 937, DateTimeKind.Utc).AddTicks(5481));
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -301,7 +314,7 @@ namespace DynamexApp.Data.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 4, 28, 22, 53, 37, 266, DateTimeKind.Utc).AddTicks(7257));
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 937, DateTimeKind.Utc).AddTicks(5740));
 
                     b.Property<string>("Subtitle")
                         .IsRequired()
@@ -320,6 +333,44 @@ namespace DynamexApp.Data.Migrations
                     b.ToTable("NewsSections");
                 });
 
+            modelBuilder.Entity("DynamexApp.Core.Entities.PageHeader", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 940, DateTimeKind.Utc).AddTicks(2061));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<DateTime>("ModifiedAt")
+                        .ValueGeneratedOnUpdate()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 940, DateTimeKind.Utc).AddTicks(2317));
+
+                    b.Property<int>("Page")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PageHeaders");
+                });
+
             modelBuilder.Entity("DynamexApp.Core.Entities.Service", b =>
                 {
                     b.Property<int>("Id")
@@ -330,7 +381,7 @@ namespace DynamexApp.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 4, 28, 22, 53, 37, 268, DateTimeKind.Utc).AddTicks(5323));
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 938, DateTimeKind.Utc).AddTicks(2472));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -352,7 +403,7 @@ namespace DynamexApp.Data.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 4, 28, 22, 53, 37, 268, DateTimeKind.Utc).AddTicks(5739));
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 938, DateTimeKind.Utc).AddTicks(2699));
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -376,7 +427,7 @@ namespace DynamexApp.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 4, 28, 22, 53, 37, 269, DateTimeKind.Utc).AddTicks(8920));
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 938, DateTimeKind.Utc).AddTicks(9031));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -398,7 +449,7 @@ namespace DynamexApp.Data.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 4, 28, 22, 53, 37, 269, DateTimeKind.Utc).AddTicks(9320));
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 938, DateTimeKind.Utc).AddTicks(9259));
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -412,6 +463,55 @@ namespace DynamexApp.Data.Migrations
                     b.ToTable("Sliders");
                 });
 
+            modelBuilder.Entity("DynamexApp.Core.Entities.Tariff", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 934, DateTimeKind.Utc).AddTicks(7934));
+
+                    b.Property<int>("DeliveryTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<bool>("IsMoreThanOneKg")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("MaxWeight")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MinWeight")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ModifiedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 934, DateTimeKind.Utc).AddTicks(8280));
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(10,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("DeliveryTypeId");
+
+                    b.ToTable("Tariffs");
+                });
+
             modelBuilder.Entity("DynamexApp.Core.Entities.Video", b =>
                 {
                     b.Property<int>("Id")
@@ -422,7 +522,7 @@ namespace DynamexApp.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 4, 28, 22, 53, 37, 271, DateTimeKind.Utc).AddTicks(526));
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 939, DateTimeKind.Utc).AddTicks(5838));
 
                     b.Property<string>("Image")
                         .IsRequired()
@@ -443,7 +543,7 @@ namespace DynamexApp.Data.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 4, 28, 22, 53, 37, 271, DateTimeKind.Utc).AddTicks(930));
+                        .HasDefaultValue(new DateTime(2022, 5, 2, 23, 5, 13, 939, DateTimeKind.Utc).AddTicks(6064));
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -455,6 +555,17 @@ namespace DynamexApp.Data.Migrations
                     b.HasIndex("LanguageId");
 
                     b.ToTable("Videos");
+                });
+
+            modelBuilder.Entity("DynamexApp.Core.Entities.AbroadAddress", b =>
+                {
+                    b.HasOne("DynamexApp.Core.Entities.Country", "Country")
+                        .WithMany("AbroadAddresses")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
                 });
 
             modelBuilder.Entity("DynamexApp.Core.Entities.Country", b =>
@@ -485,25 +596,6 @@ namespace DynamexApp.Data.Migrations
                     b.Navigation("Brand");
 
                     b.Navigation("Country");
-                });
-
-            modelBuilder.Entity("DynamexApp.Core.Entities.DeliveryPrice", b =>
-                {
-                    b.HasOne("DynamexApp.Core.Entities.Country", "Country")
-                        .WithMany("DeliveryPrices")
-                        .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DynamexApp.Core.Entities.DeliveryType", "DeliveryType")
-                        .WithMany("DeliveryPrices")
-                        .HasForeignKey("DeliveryTypeId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("Country");
-
-                    b.Navigation("DeliveryType");
                 });
 
             modelBuilder.Entity("DynamexApp.Core.Entities.DeliveryType", b =>
@@ -561,6 +653,25 @@ namespace DynamexApp.Data.Migrations
                     b.Navigation("Language");
                 });
 
+            modelBuilder.Entity("DynamexApp.Core.Entities.Tariff", b =>
+                {
+                    b.HasOne("DynamexApp.Core.Entities.Country", "Country")
+                        .WithMany("Tariffs")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DynamexApp.Core.Entities.DeliveryType", "DeliveryType")
+                        .WithMany("Tariffs")
+                        .HasForeignKey("DeliveryTypeId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Country");
+
+                    b.Navigation("DeliveryType");
+                });
+
             modelBuilder.Entity("DynamexApp.Core.Entities.Video", b =>
                 {
                     b.HasOne("DynamexApp.Core.Entities.Language", "Language")
@@ -579,14 +690,16 @@ namespace DynamexApp.Data.Migrations
 
             modelBuilder.Entity("DynamexApp.Core.Entities.Country", b =>
                 {
+                    b.Navigation("AbroadAddresses");
+
                     b.Navigation("CountryBrands");
 
-                    b.Navigation("DeliveryPrices");
+                    b.Navigation("Tariffs");
                 });
 
             modelBuilder.Entity("DynamexApp.Core.Entities.DeliveryType", b =>
                 {
-                    b.Navigation("DeliveryPrices");
+                    b.Navigation("Tariffs");
                 });
 
             modelBuilder.Entity("DynamexApp.Core.Entities.Language", b =>

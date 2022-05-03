@@ -15,7 +15,7 @@ namespace DynamexApp.Data
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<CountryBrand> CountryBrands { get; set; }
-        public DbSet<DeliveryPrice> DeliveryPrices { get; set; }
+        public DbSet<Tariff> Tariffs { get; set; }
         public DbSet<DeliveryType> DeliveryTypes { get; set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<News> News { get; set; }
@@ -23,11 +23,14 @@ namespace DynamexApp.Data
         public DbSet<Service> Services { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Video> Videos { get; set; }
+        public DbSet<PageHeader> PageHeaders { get; set; }
+        public DbSet<AbroadAddress> AbroadAddresses { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new AbroadAddressConfiguration());
             modelBuilder.ApplyConfiguration(new BrandConfiguration());
             modelBuilder.ApplyConfiguration(new CountryConfiguration());
-            modelBuilder.ApplyConfiguration(new DeliveryPriceConfiguration());
+            modelBuilder.ApplyConfiguration(new TariffConfiguration());
             modelBuilder.ApplyConfiguration(new DeliveryTypeConfiguration());
             modelBuilder.ApplyConfiguration(new LanguageConfiguration());
             modelBuilder.ApplyConfiguration(new NewsConfiguration());
@@ -35,6 +38,7 @@ namespace DynamexApp.Data
             modelBuilder.ApplyConfiguration(new ServiceConfiguration());
             modelBuilder.ApplyConfiguration(new SliderConfiguration());
             modelBuilder.ApplyConfiguration(new VideoConfiguration());
+            modelBuilder.ApplyConfiguration(new PageHeaderConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace DynamexApp.Data.Repositories
 {
-    class DeliveryPriceRepository:Repository<DeliveryPrice>,IDeliveryPriceRepository
+    class TariffRepository:Repository<Tariff>,ITariffRepository
     {
         private readonly AppDbContext _context;
-        public DeliveryPriceRepository(AppDbContext context) : base(context)
+        public TariffRepository(AppDbContext context) : base(context)
         {
             _context = context;
         }

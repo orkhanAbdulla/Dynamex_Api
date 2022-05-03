@@ -53,6 +53,7 @@ namespace DynamexApp.Api
             });
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ILanguageService, LanguageService>();
+            services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<IFileManager, FileManager>();
 
             var mapConfig = new MapperConfiguration(mc =>

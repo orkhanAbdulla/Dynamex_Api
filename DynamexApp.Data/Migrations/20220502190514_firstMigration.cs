@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DynamexApp.Data.Migrations
 {
-    public partial class FirstMigrations : Migration
+    public partial class firstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,8 +15,9 @@ namespace DynamexApp.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Link = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 4, 28, 22, 53, 37, 252, DateTimeKind.Utc).AddTicks(2880)),
-                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 4, 28, 22, 53, 37, 252, DateTimeKind.Utc).AddTicks(5356)),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 929, DateTimeKind.Utc).AddTicks(5065)),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 929, DateTimeKind.Utc).AddTicks(5284)),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
@@ -32,13 +33,31 @@ namespace DynamexApp.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Code = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 4, 28, 22, 53, 37, 262, DateTimeKind.Utc).AddTicks(9783)),
-                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 4, 28, 22, 53, 37, 263, DateTimeKind.Utc).AddTicks(166)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 936, DateTimeKind.Utc).AddTicks(1408)),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 936, DateTimeKind.Utc).AddTicks(1644)),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Languages", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PageHeaders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Page = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 940, DateTimeKind.Utc).AddTicks(2061)),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 940, DateTimeKind.Utc).AddTicks(2317)),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PageHeaders", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -49,8 +68,8 @@ namespace DynamexApp.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     LanguageId = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 4, 28, 22, 53, 37, 255, DateTimeKind.Utc).AddTicks(821)),
-                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 4, 28, 22, 53, 37, 255, DateTimeKind.Utc).AddTicks(1418)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 930, DateTimeKind.Utc).AddTicks(7774)),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 930, DateTimeKind.Utc).AddTicks(8020)),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
@@ -72,8 +91,8 @@ namespace DynamexApp.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     LanguageId = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 4, 28, 22, 53, 37, 261, DateTimeKind.Utc).AddTicks(8211)),
-                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 4, 28, 22, 53, 37, 261, DateTimeKind.Utc).AddTicks(8623)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 935, DateTimeKind.Utc).AddTicks(4738)),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 935, DateTimeKind.Utc).AddTicks(5063)),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
@@ -97,8 +116,8 @@ namespace DynamexApp.Data.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LanguageId = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 4, 28, 22, 53, 37, 264, DateTimeKind.Utc).AddTicks(230)),
-                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 4, 28, 22, 53, 37, 264, DateTimeKind.Utc).AddTicks(688)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 936, DateTimeKind.Utc).AddTicks(8067)),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 936, DateTimeKind.Utc).AddTicks(8326)),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
@@ -121,8 +140,8 @@ namespace DynamexApp.Data.Migrations
                     Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Subtitle = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     LanguageId = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 4, 28, 22, 53, 37, 266, DateTimeKind.Utc).AddTicks(5932)),
-                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 4, 28, 22, 53, 37, 266, DateTimeKind.Utc).AddTicks(7257)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 937, DateTimeKind.Utc).AddTicks(5481)),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 937, DateTimeKind.Utc).AddTicks(5740)),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
@@ -146,8 +165,8 @@ namespace DynamexApp.Data.Migrations
                     Description = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LanguageId = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 4, 28, 22, 53, 37, 268, DateTimeKind.Utc).AddTicks(5323)),
-                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 4, 28, 22, 53, 37, 268, DateTimeKind.Utc).AddTicks(5739)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 938, DateTimeKind.Utc).AddTicks(2472)),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 938, DateTimeKind.Utc).AddTicks(2699)),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
@@ -171,8 +190,8 @@ namespace DynamexApp.Data.Migrations
                     Description = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LanguageId = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 4, 28, 22, 53, 37, 269, DateTimeKind.Utc).AddTicks(8920)),
-                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 4, 28, 22, 53, 37, 269, DateTimeKind.Utc).AddTicks(9320)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 938, DateTimeKind.Utc).AddTicks(9031)),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 938, DateTimeKind.Utc).AddTicks(9259)),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
@@ -196,8 +215,8 @@ namespace DynamexApp.Data.Migrations
                     Link = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     LanguageId = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 4, 28, 22, 53, 37, 271, DateTimeKind.Utc).AddTicks(526)),
-                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 4, 28, 22, 53, 37, 271, DateTimeKind.Utc).AddTicks(930)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 939, DateTimeKind.Utc).AddTicks(5838)),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 939, DateTimeKind.Utc).AddTicks(6064)),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
@@ -207,6 +226,34 @@ namespace DynamexApp.Data.Migrations
                         name: "FK_Videos_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AbroadAddresses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CountryId = table.Column<int>(type: "int", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Region = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    District = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AdressTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adress = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 928, DateTimeKind.Utc).AddTicks(6846)),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 928, DateTimeKind.Utc).AddTicks(7688)),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AbroadAddresses", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AbroadAddresses_Countries_CountryId",
+                        column: x => x.CountryId,
+                        principalTable: "Countries",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -238,35 +285,41 @@ namespace DynamexApp.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DeliveryPrices",
+                name: "Tariffs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MinWeight = table.Column<int>(type: "int", nullable: false),
                     MaxWeight = table.Column<int>(type: "int", nullable: false),
+                    IsMoreThanOneKg = table.Column<bool>(type: "bit", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     CountryId = table.Column<int>(type: "int", nullable: false),
                     DeliveryTypeId = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 4, 28, 22, 53, 37, 260, DateTimeKind.Utc).AddTicks(8294)),
-                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 4, 28, 22, 53, 37, 260, DateTimeKind.Utc).AddTicks(8727)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 934, DateTimeKind.Utc).AddTicks(7934)),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 2, 23, 5, 13, 934, DateTimeKind.Utc).AddTicks(8280)),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DeliveryPrices", x => x.Id);
+                    table.PrimaryKey("PK_Tariffs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DeliveryPrices_Countries_CountryId",
+                        name: "FK_Tariffs_Countries_CountryId",
                         column: x => x.CountryId,
                         principalTable: "Countries",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_DeliveryPrices_DeliveryTypes_DeliveryTypeId",
+                        name: "FK_Tariffs_DeliveryTypes_DeliveryTypeId",
                         column: x => x.DeliveryTypeId,
                         principalTable: "DeliveryTypes",
                         principalColumn: "Id");
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AbroadAddresses_CountryId",
+                table: "AbroadAddresses",
+                column: "CountryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Countries_LanguageId",
@@ -282,16 +335,6 @@ namespace DynamexApp.Data.Migrations
                 name: "IX_CountryBrands_CountryId",
                 table: "CountryBrands",
                 column: "CountryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DeliveryPrices_CountryId",
-                table: "DeliveryPrices",
-                column: "CountryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DeliveryPrices_DeliveryTypeId",
-                table: "DeliveryPrices",
-                column: "DeliveryTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_DeliveryTypes_LanguageId",
@@ -319,6 +362,16 @@ namespace DynamexApp.Data.Migrations
                 column: "LanguageId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Tariffs_CountryId",
+                table: "Tariffs",
+                column: "CountryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tariffs_DeliveryTypeId",
+                table: "Tariffs",
+                column: "DeliveryTypeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Videos_LanguageId",
                 table: "Videos",
                 column: "LanguageId");
@@ -327,10 +380,10 @@ namespace DynamexApp.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CountryBrands");
+                name: "AbroadAddresses");
 
             migrationBuilder.DropTable(
-                name: "DeliveryPrices");
+                name: "CountryBrands");
 
             migrationBuilder.DropTable(
                 name: "News");
@@ -339,10 +392,16 @@ namespace DynamexApp.Data.Migrations
                 name: "NewsSections");
 
             migrationBuilder.DropTable(
+                name: "PageHeaders");
+
+            migrationBuilder.DropTable(
                 name: "Services");
 
             migrationBuilder.DropTable(
                 name: "Sliders");
+
+            migrationBuilder.DropTable(
+                name: "Tariffs");
 
             migrationBuilder.DropTable(
                 name: "Videos");
