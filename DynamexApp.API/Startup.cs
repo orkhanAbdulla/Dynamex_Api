@@ -55,6 +55,8 @@ namespace DynamexApp.Api
             services.AddScoped<ILanguageService, LanguageService>();
             services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<IFileManager, FileManager>();
+            services.AddScoped<IBrandService, BrandService>();
+            services.AddScoped<IHelperAccessor, HelperAccessor>();
 
             var mapConfig = new MapperConfiguration(mc =>
             {

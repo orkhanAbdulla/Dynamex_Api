@@ -67,6 +67,7 @@ namespace DynamexApp.Data.Repositories
                 {
                     query = query.Include(item);
                 }
+                
             }
             return await query.CountAsync(exp);
         }

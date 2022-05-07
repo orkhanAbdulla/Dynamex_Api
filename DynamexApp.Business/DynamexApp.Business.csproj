@@ -14,8 +14,4 @@
     <ProjectReference Include="..\DynamexApp.Data\DynamexApp.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DTOs\BrandDto\" />
-  </ItemGroup>
-
 </Project>

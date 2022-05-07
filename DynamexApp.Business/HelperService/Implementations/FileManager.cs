@@ -12,13 +12,25 @@ namespace DynamexApp.Business.HelperService.Implementations
 {
     public class FileManager : IFileManager
     {
+        private readonly IHelperAccessor _helperAccessor;
+
+        public FileManager(IHelperAccessor helperAccessor)
+        {
+            _helperAccessor = helperAccessor;
+        }
+
+        public void DeleteFile(string folder, string fileName)
+        {
+            string path = Path.Combine(Directory.GetCurrentDirectory() + "/wwwroot/uploads",folder, fileName);
+
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
+        }
+
         public async Task<SavedFileDto> Save(IFormFile file,string folder)
         {
-            if (file == null)
-                throw new Exception("file null ola bilmez");
-            if (file.ContentType != "image/jpeg" && file.ContentType != "image/png")
-                throw new Exception("File formati yanlishdi");
-
             string NewfileName = Guid.NewGuid().ToString() + file.FileName;
             string rooting = Path.Combine(Directory.GetCurrentDirectory()+"/wwwroot/uploads",folder);
             string resultPath = Path.Combine(rooting, NewfileName);
@@ -27,7 +39,7 @@ namespace DynamexApp.Business.HelperService.Implementations
             {
                 FileName = file.FileName,
                 ChangedFileName = NewfileName,
-                Path = ""
+                Path = _helperAccessor.BaseUrl+"/uploads/Brands/"+ NewfileName
             };
 
             using (FileStream fileStream = new FileStream(resultPath, FileMode.Create))

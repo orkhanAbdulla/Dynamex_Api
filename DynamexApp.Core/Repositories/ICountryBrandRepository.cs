@@ -9,5 +9,7 @@ namespace DynamexApp.Core.Repositories
 {
     public interface ICountryBrandRepository:IRepository<CountryBrand>
     {
+       Task InsertCountryBrandAsync(List<CountryBrand> entity);
+      
     }
 }

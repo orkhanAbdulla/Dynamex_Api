@@ -23,7 +23,7 @@ namespace DynamexApp.Data
         private IServiceRepository _service;
         private ISliderRepository _slider;
         private IVideoRepository _video;
-       
+        private ICountryBrandRepository _contryBrand;    
         public UnitOfWork(AppDbContext context)
         {
             _context = context;
@@ -48,6 +48,8 @@ namespace DynamexApp.Data
         public ISliderRepository SliderRepository => _slider = _slider ?? new SliderRepository(_context) ;
 
         public IVideoRepository VideoRepository => _video = _video ?? new VideoRepository(_context);
+
+        public ICountryBrandRepository ContryBrandRepository => _contryBrand = _contryBrand ?? new CountryBrandRepository(_context);
 
         public async Task CommitAsync()
         {

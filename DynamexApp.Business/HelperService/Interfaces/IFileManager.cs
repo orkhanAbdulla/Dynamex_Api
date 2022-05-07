@@ -11,5 +11,7 @@ namespace DynamexApp.Business.HelperService.Interfaces
     public interface IFileManager
     {
         Task<SavedFileDto> Save(IFormFile file,string folder);
+        void DeleteFile(string folder, string fileName);
+       
     }
 }

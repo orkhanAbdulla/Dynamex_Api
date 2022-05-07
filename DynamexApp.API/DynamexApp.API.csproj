@@ -16,4 +16,8 @@
     <ProjectReference Include="..\DynamexApp.Business\DynamexApp.Business.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\Brands\" />
+  </ItemGroup>
+
 </Project>

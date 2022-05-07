@@ -33,7 +33,14 @@ namespace DynamexApp.API.ServiceExtentions
                         {
                             code = 409;
                         }
-                    }
+                        else if (contextFeature.Error is FileFormatException)
+                        {
+                            code = 400;
+                        }
+                        else if (contextFeature.Error is ItemNotFoundException) {
+                            code = 400;
+                        }
+            }
                     context.Response.StatusCode = code;
                     var JsonStr = JsonConvert.SerializeObject(new { 
                          code=code,

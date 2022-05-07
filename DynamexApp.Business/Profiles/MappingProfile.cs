@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DynamexApp.Business.DTOs.BrandDto;
 using DynamexApp.Business.DTOs.CountryDTO;
 using DynamexApp.Business.DTOs.LanguageDTO;
 using DynamexApp.Core.Entities;
@@ -19,6 +20,9 @@ namespace DynamexApp.Business.Profiles
             CreateMap<CountryPostDTO, Country>();
             CreateMap<Country, CountryGetDto>();
             CreateMap<CountryEditDTO, Country>();
+            CreateMap<BrandPostDto, Brand>();
+            CreateMap<Brand, BrandGetDTO>();
+            CreateMap<Brand, BrandListItemDto>();
         }
     }
 }

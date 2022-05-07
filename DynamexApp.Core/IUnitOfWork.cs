@@ -19,6 +19,7 @@ namespace DynamexApp.Core
         public IServiceRepository ServiceRepository { get; }
         public ISliderRepository SliderRepository { get; }
         public IVideoRepository VideoRepository { get; }
+        public ICountryBrandRepository ContryBrandRepository { get; }
         Task CommitAsync();
     }
 }
